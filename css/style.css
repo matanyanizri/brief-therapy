@@ -1,0 +1,584 @@
+/* =========================================================
+   פסיכותרפיה מוגבלת בזמן — אתר לימוד עצמי
+   עיצוב: לוח צבעים רגוע (פטרול עמוק, נייר מרווה, ענבר-חול)
+   טיפוגרפיה: IBM Plex Sans Hebrew | כיווניות: RTL
+   ========================================================= */
+
+:root {
+  --ink: #22333b;          /* טקסט ראשי — צפחה כהה */
+  --ink-soft: #4d5e66;     /* טקסט משני */
+  --petrol: #2c5f63;       /* צבע ראשי — פטרול רגוע */
+  --petrol-dark: #1d4347;
+  --petrol-tint: #e7efee;  /* רקע פטרול בהיר */
+  --paper: #f4f6f3;        /* רקע כללי — נייר מרווה קריר */
+  --card: #ffffff;
+  --line: #dbe3dd;
+  --amber: #b07c3f;        /* ענבר-חול: הדגשות "זמן" בלבד */
+  --amber-tint: #f6efe3;
+  --phase1: #7fa8a2;       /* שלב פתיחה */
+  --phase2: #2c5f63;       /* שלב אמצע */
+  --phase3: #b07c3f;       /* שלב סיום/פרידה */
+  --radius: 14px;
+  --shadow: 0 2px 10px rgba(34, 51, 59, 0.07);
+  --maxw: 1080px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'IBM Plex Sans Hebrew', 'Segoe UI', Arial, sans-serif;
+  direction: rtl;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.75;
+  font-size: 1.02rem;
+}
+
+/* ---------- ניווט עליון ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(244, 246, 243, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav-inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0.7rem 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.brand-mark {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: conic-gradient(var(--phase1) 0 33%, var(--phase2) 33% 75%, var(--phase3) 75% 100%);
+  position: relative;
+  flex-shrink: 0;
+}
+.brand-mark::after {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border-radius: 50%;
+  background: var(--paper);
+}
+
+.brand-title { font-weight: 700; font-size: 1.02rem; line-height: 1.2; }
+.brand-sub { font-size: 0.72rem; color: var(--ink-soft); font-weight: 400; }
+
+.main-nav ul {
+  display: flex;
+  gap: 0.25rem;
+  list-style: none;
+}
+
+.main-nav a {
+  display: block;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  text-decoration: none;
+  color: var(--ink-soft);
+  font-weight: 500;
+  font-size: 0.92rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.main-nav a:hover { background: var(--petrol-tint); color: var(--petrol-dark); }
+.main-nav a.active { background: var(--petrol); color: #fff; }
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.4rem 0.6rem;
+  font-size: 1.15rem;
+  cursor: pointer;
+  color: var(--ink);
+}
+
+/* ---------- מבנה כללי ---------- */
+.container { max-width: var(--maxw); margin: 0 auto; padding: 0 1.2rem; }
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--petrol);
+  border: 1px solid var(--petrol);
+  border-radius: 999px;
+  padding: 0.15rem 0.8rem;
+  margin-bottom: 0.9rem;
+}
+
+h1 { font-size: clamp(1.7rem, 4vw, 2.5rem); font-weight: 700; line-height: 1.3; }
+h2 { font-size: clamp(1.3rem, 3vw, 1.7rem); font-weight: 700; margin-bottom: 0.8rem; color: var(--petrol-dark); }
+h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem; }
+
+.lead { font-size: 1.1rem; color: var(--ink-soft); max-width: 46rem; }
+
+section.block { padding: 2.6rem 0; }
+section.block + section.block { border-top: 1px solid var(--line); }
+
+.prose p { margin-bottom: 1rem; max-width: 48rem; }
+.prose ul, .prose ol { margin: 0 1.4rem 1rem 0; max-width: 46rem; }
+.prose li { margin-bottom: 0.45rem; }
+.prose strong { color: var(--petrol-dark); }
+
+blockquote {
+  border-right: 4px solid var(--amber);
+  background: var(--amber-tint);
+  padding: 0.9rem 1.1rem;
+  border-radius: 8px;
+  margin: 1.2rem 0;
+  max-width: 44rem;
+  font-style: normal;
+  color: var(--ink);
+}
+blockquote .src { display: block; margin-top: 0.4rem; font-size: 0.82rem; color: var(--ink-soft); }
+
+.note {
+  background: var(--petrol-tint);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem;
+  max-width: 46rem;
+  margin: 1rem 0;
+  font-size: 0.95rem;
+}
+
+/* ---------- Hero ---------- */
+.hero { padding: 3.4rem 0 2.4rem; }
+.hero .lead { margin-top: 0.9rem; }
+
+.hero-actions { margin-top: 1.6rem; display: flex; gap: 0.7rem; flex-wrap: wrap; }
+
+.btn {
+  display: inline-block;
+  padding: 0.6rem 1.3rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.btn:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+.btn-primary { background: var(--petrol); color: #fff; }
+.btn-ghost { border: 1.5px solid var(--petrol); color: var(--petrol-dark); }
+
+/* ---------- ציר 12 המפגשים (אלמנט חתימה) ---------- */
+.session-track {
+  margin-top: 2.4rem;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.4rem 1.4rem 1.1rem;
+}
+
+.track-title { font-size: 0.85rem; font-weight: 700; color: var(--ink-soft); margin-bottom: 1rem; letter-spacing: 0.05em; }
+
+.track-line { display: flex; gap: 6px; align-items: flex-end; }
+
+.track-dot {
+  flex: 1;
+  min-width: 0;
+  text-align: center;
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+}
+.track-dot .pip {
+  display: block;
+  height: 34px;
+  border-radius: 8px;
+  margin-bottom: 0.3rem;
+  opacity: 0.9;
+}
+.track-dot.p1 .pip { background: var(--phase1); }
+.track-dot.p2 .pip { background: var(--phase2); }
+.track-dot.p3 .pip { background: var(--phase3); }
+
+.track-legend { display: flex; gap: 1.2rem; flex-wrap: wrap; margin-top: 0.9rem; font-size: 0.82rem; color: var(--ink-soft); }
+.track-legend span { display: flex; align-items: center; gap: 0.4rem; }
+.dot { width: 12px; height: 12px; border-radius: 4px; display: inline-block; }
+.dot.p1 { background: var(--phase1); }
+.dot.p2 { background: var(--phase2); }
+.dot.p3 { background: var(--phase3); }
+
+/* ---------- כרטיסים ---------- */
+.grid { display: grid; gap: 1.1rem; margin-top: 1.4rem; }
+.grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.3rem 1.3rem 1.2rem;
+  box-shadow: var(--shadow);
+}
+
+.card .chip {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: var(--petrol-tint);
+  color: var(--petrol-dark);
+  border-radius: 999px;
+  padding: 0.12rem 0.7rem;
+  margin-bottom: 0.6rem;
+}
+.card.amber .chip { background: var(--amber-tint); color: var(--amber); }
+
+.card p { font-size: 0.94rem; color: var(--ink-soft); }
+.card a.more { display: inline-block; margin-top: 0.7rem; color: var(--petrol); font-weight: 600; text-decoration: none; font-size: 0.9rem; }
+.card a.more:hover { text-decoration: underline; }
+
+/* ---------- דיאגרמות CSS ---------- */
+.diagram {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.4rem;
+  margin: 1.4rem 0;
+  box-shadow: var(--shadow);
+  overflow-x: auto;
+}
+.diagram-caption { font-size: 0.82rem; color: var(--ink-soft); margin-top: 0.8rem; border-top: 1px dashed var(--line); padding-top: 0.6rem; }
+
+/* שרשרת שלושת רכיבי המוקד */
+.focus-chain { display: flex; align-items: stretch; gap: 0; flex-wrap: wrap; }
+.focus-chain .node {
+  flex: 1;
+  min-width: 190px;
+  background: var(--petrol-tint);
+  border: 1.5px solid var(--petrol);
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+  text-align: center;
+}
+.focus-chain .node h4 { color: var(--petrol-dark); font-size: 0.98rem; margin-bottom: 0.3rem; }
+.focus-chain .node p { font-size: 0.82rem; color: var(--ink-soft); line-height: 1.5; }
+.focus-chain .arrow {
+  align-self: center;
+  padding: 0 0.5rem;
+  color: var(--petrol);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+/* עקומת הברית הטיפולית */
+.alliance-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.7rem; }
+.alliance-steps .step { border-radius: 10px; padding: 0.8rem; font-size: 0.85rem; border-right: 5px solid; background: #fbfcfa; }
+.alliance-steps .step b { display: block; margin-bottom: 0.2rem; font-size: 0.9rem; }
+.alliance-steps .s1 { border-color: var(--phase1); }
+.alliance-steps .s2 { border-color: var(--phase2); }
+.alliance-steps .s3 { border-color: #6b4f8f; }
+.alliance-steps .s4 { border-color: var(--phase3); }
+
+/* Mermaid container */
+.mermaid { direction: ltr; text-align: center; }
+.mermaid svg { max-width: 100%; height: auto; }
+
+/* ---------- טבלאות ---------- */
+table.compare {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  margin: 1.2rem 0;
+  font-size: 0.92rem;
+}
+table.compare th, table.compare td { padding: 0.7rem 0.9rem; border-bottom: 1px solid var(--line); text-align: right; vertical-align: top; }
+table.compare th { background: var(--petrol); color: #fff; font-weight: 600; }
+table.compare tr:last-child td { border-bottom: none; }
+table.compare td:first-child { font-weight: 600; color: var(--petrol-dark); white-space: nowrap; }
+
+/* ---------- מקרי בוחן ---------- */
+.case {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.6rem;
+  margin: 1.6rem 0;
+}
+.case-head { display: flex; align-items: baseline; gap: 0.8rem; flex-wrap: wrap; margin-bottom: 0.8rem; }
+.case-num {
+  background: var(--petrol);
+  color: #fff;
+  font-weight: 700;
+  border-radius: 10px;
+  padding: 0.15rem 0.75rem;
+  font-size: 0.85rem;
+}
+.case h3 { margin-bottom: 0; }
+.case .meta { font-size: 0.82rem; color: var(--ink-soft); margin-bottom: 1rem; }
+.case h4 { color: var(--petrol-dark); margin: 1.1rem 0 0.35rem; font-size: 1rem; }
+.case p { margin-bottom: 0.7rem; }
+.case .source {
+  margin-top: 1.1rem;
+  padding-top: 0.8rem;
+  border-top: 1px dashed var(--line);
+  font-size: 0.83rem;
+  color: var(--ink-soft);
+}
+
+/* ---------- בוחן עצמי ---------- */
+.quiz-q {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.3rem;
+  margin-bottom: 1.1rem;
+  box-shadow: var(--shadow);
+}
+.quiz-q h3 { font-size: 1rem; margin-bottom: 0.8rem; }
+.quiz-options { display: grid; gap: 0.5rem; }
+.quiz-option {
+  text-align: right;
+  width: 100%;
+  background: var(--paper);
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  padding: 0.6rem 0.9rem;
+  font-family: inherit;
+  font-size: 0.93rem;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  color: var(--ink);
+}
+.quiz-option:hover { border-color: var(--petrol); }
+.quiz-option.correct { background: #e4f2e7; border-color: #3d8b52; }
+.quiz-option.wrong { background: #f9e8e6; border-color: #b0503f; }
+.quiz-option:disabled { cursor: default; opacity: 0.95; }
+.quiz-feedback { margin-top: 0.8rem; font-size: 0.9rem; padding: 0.7rem 0.9rem; border-radius: 10px; display: none; }
+.quiz-feedback.show { display: block; }
+.quiz-feedback.ok { background: #e4f2e7; color: #245a34; }
+.quiz-feedback.err { background: #f9e8e6; color: #7c3325; }
+
+.quiz-score {
+  position: sticky;
+  bottom: 1rem;
+  background: var(--petrol-dark);
+  color: #fff;
+  border-radius: 999px;
+  padding: 0.6rem 1.4rem;
+  display: inline-block;
+  font-weight: 600;
+  box-shadow: var(--shadow);
+}
+
+/* ---------- מילון ---------- */
+.glossary dt {
+  font-weight: 700;
+  color: var(--petrol-dark);
+  margin-top: 1.1rem;
+  font-size: 1.02rem;
+}
+.glossary dd { margin-right: 0; color: var(--ink-soft); max-width: 46rem; font-size: 0.95rem; }
+.glossary dt .en { font-weight: 400; color: var(--ink-soft); font-size: 0.85rem; }
+
+/* ---------- ביבליוגרפיה ---------- */
+.ref-list { list-style: none; max-width: 50rem; }
+.ref-list li {
+  padding: 0.55rem 0;
+  border-bottom: 1px dashed var(--line);
+  font-size: 0.92rem;
+}
+.ref-list li[lang="en"] { direction: ltr; text-align: left; font-family: 'IBM Plex Sans Hebrew', sans-serif; }
+
+/* ---------- פוטר ---------- */
+.site-footer {
+  margin-top: 3rem;
+  border-top: 1px solid var(--line);
+  padding: 1.6rem 0 2.2rem;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+.site-footer .container { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.footer-nav a { color: var(--petrol); text-decoration: none; margin-inline-start: 0.9rem; }
+.footer-nav a:hover { text-decoration: underline; }
+
+.disclaimer { font-size: 0.8rem; max-width: 40rem; }
+
+/* ---------- ניווט בין פרקים ---------- */
+.pager { display: flex; justify-content: space-between; gap: 1rem; margin: 2.5rem 0 0; }
+.pager a {
+  text-decoration: none;
+  color: var(--petrol-dark);
+  font-weight: 600;
+  border: 1px solid var(--line);
+  background: var(--card);
+  border-radius: 12px;
+  padding: 0.7rem 1.1rem;
+  font-size: 0.9rem;
+  transition: border-color 0.15s;
+}
+.pager a:hover { border-color: var(--petrol); }
+.pager small { display: block; color: var(--ink-soft); font-weight: 400; font-size: 0.75rem; }
+
+/* ---------- הופעה הדרגתית ---------- */
+.reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .btn:hover { transform: none; }
+}
+
+/* ---------- נגישות ---------- */
+a:focus-visible, button:focus-visible {
+  outline: 3px solid var(--amber);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* ---------- רספונסיביות ---------- */
+@media (max-width: 900px) {
+  .grid.cols-3 { grid-template-columns: 1fr 1fr; }
+  .alliance-steps { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 680px) {
+  .nav-toggle { display: block; }
+  .main-nav { display: none; width: 100%; }
+  .main-nav.open { display: block; }
+  .main-nav ul { flex-direction: column; padding-top: 0.5rem; }
+  .nav-inner { flex-wrap: wrap; }
+  .grid.cols-3, .grid.cols-2 { grid-template-columns: 1fr; }
+  .track-line { flex-wrap: wrap; }
+  .track-dot { flex: 0 0 calc(16.6% - 6px); }
+  .focus-chain { flex-direction: column; }
+  .focus-chain .arrow { transform: rotate(90deg); padding: 0.2rem 0; }
+  .alliance-steps { grid-template-columns: 1fr; }
+  .pager { flex-direction: column; }
+}
+
+/* ---------- נקודות ערך ב-Hero ---------- */
+.hero-points {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.6rem;
+  margin-top: 1.3rem;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+.hero-points li { display: flex; align-items: center; gap: 0.45rem; }
+.hero-points .tick { color: var(--petrol); font-weight: 700; }
+
+/* ---------- מסלול לימוד מומלץ ---------- */
+.path-steps {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.8rem;
+  margin-top: 1.4rem;
+}
+.path-steps a {
+  display: block;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1rem;
+  text-decoration: none;
+  color: var(--ink);
+  box-shadow: var(--shadow);
+  transition: transform 0.15s, border-color 0.15s;
+}
+.path-steps a:hover { transform: translateY(-3px); border-color: var(--petrol); }
+.path-steps .num {
+  display: inline-flex;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--petrol);
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin-bottom: 0.55rem;
+}
+.path-steps b { display: block; font-size: 0.95rem; margin-bottom: 0.2rem; }
+.path-steps .desc { font-size: 0.8rem; color: var(--ink-soft); line-height: 1.5; }
+
+/* ---------- "בפרק זה" — ניווט פנימי ---------- */
+.toc { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin-top: 1.3rem; }
+.toc-label { font-size: 0.8rem; font-weight: 700; color: var(--ink-soft); }
+.toc a {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.28rem 0.85rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--petrol-dark);
+  text-decoration: none;
+  transition: background 0.15s, border-color 0.15s;
+}
+.toc a:hover { background: var(--petrol-tint); border-color: var(--petrol); }
+
+/* ---------- ספרייה מקצועית ---------- */
+.res-item h3 { font-size: 1.02rem; }
+.res-item h3 a { color: var(--petrol-dark); text-decoration: none; }
+.res-item h3 a:hover { text-decoration: underline; }
+.res-meta { font-size: 0.78rem; color: var(--ink-soft); margin-bottom: 0.5rem; }
+.res-links { margin-top: 0.6rem; }
+.res-links a {
+  font-size: 0.85rem;
+  color: var(--petrol);
+  font-weight: 600;
+  text-decoration: none;
+  margin-inline-end: 1rem;
+}
+.res-links a:hover { text-decoration: underline; }
+
+/* ---------- כפתור חזרה למעלה ---------- */
+.to-top {
+  position: fixed;
+  bottom: 1.1rem;
+  left: 1.1rem;
+  z-index: 60;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: var(--petrol);
+  color: #fff;
+  font-size: 1.15rem;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(34, 51, 59, 0.25);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s;
+}
+.to-top.show { opacity: 1; pointer-events: auto; }
+.to-top:hover { background: var(--petrol-dark); }
+
+@media (max-width: 900px) {
+  .path-steps { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 680px) {
+  .path-steps { grid-template-columns: 1fr; }
+}
