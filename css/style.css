@@ -473,6 +473,8 @@ a:focus-visible, button:focus-visible {
   .focus-chain .arrow { transform: rotate(90deg); padding: 0.2rem 0; }
   .alliance-steps { grid-template-columns: 1fr; }
   .pager { flex-direction: column; }
+  table.compare { display: block; overflow-x: auto; }
+  table.compare td:first-child { white-space: normal; }
 }
 
 /* ---------- נקודות ערך ב-Hero ---------- */
